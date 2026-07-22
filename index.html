@@ -22,9 +22,9 @@
     <button type="button" data-city="guangxi">广西方案</button>
     <button type="button" data-city="quanzhou">泉州方案</button>
   </nav>
-  <iframe class="city-frame" id="chengduFrame" title="成都方案" src="chengdu.html"></iframe>
-  <iframe class="city-frame" id="guangxiFrame" title="广西方案" src="guangxi.html" hidden></iframe>
-  <iframe class="city-frame" id="quanzhouFrame" title="泉州方案" src="quanzhou.html" hidden></iframe>
+  <iframe class="city-frame" id="chengduFrame" title="成都方案" src="chengdu.html" data-loaded="1"></iframe>
+  <iframe class="city-frame" id="guangxiFrame" title="广西方案" data-src="guangxi.html" hidden></iframe>
+  <iframe class="city-frame" id="quanzhouFrame" title="泉州方案" data-src="quanzhou.html" hidden></iframe>
   <script>
     (() => {
       const frames = {
@@ -34,6 +34,11 @@
       };
       const buttons = [...document.querySelectorAll('[data-city]')];
       const show = (city) => {
+        const frame = frames[city];
+        if (frame.dataset.src && !frame.dataset.loaded) {
+          frame.src = frame.dataset.src;
+          frame.dataset.loaded = '1';
+        }
         Object.entries(frames).forEach(([key, frame]) => { frame.hidden = key !== city; });
         buttons.forEach((button) => button.classList.toggle('active', button.dataset.city === city));
         try { localStorage.setItem('midway-city', city); } catch (_) {}
