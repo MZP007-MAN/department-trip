@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#486750">
+  <title>福建 · 泉州市区 2.5天部门中途旅游</title>
+  <style>
+    :root {
+      --ink: #24352c;
+      --muted: #718076;
+      --green: #486750;
+      --green-dark: #294536;
+      --green-soft: #dce8dc;
+      --cream: #f6f3ed;
+      --paper: #fffdfa;
+      --line: #e4e7df;
+      --gold: #d39a47;
+      --coral: #d27f65;
+      --shadow: 0 24px 70px rgba(46, 66, 51, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+
+    .hero {
+      min-height: 535px;
+      padding: 76px 24px 110px;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(24, 61, 41, .95) 0%, rgba(38, 82, 55, .78) 47%, rgba(58, 91, 61, .38) 100%),
+        url("assets/quanzhou/image-01.jpg") center 46% / cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -110px -10%;
+      height: 210px;
+      background: var(--cream);
+      border-radius: 50% 50% 0 0 / 55% 55% 0 0;
+    }
+    .hero-inner, main { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    .hero-inner { position: relative; }
+    .eyebrow { opacity: .84; letter-spacing: .16em; font-size: 12px; text-transform: uppercase; }
+    h1 {
+      margin: 20px 0 10px;
+      font-size: clamp(38px, 7vw, 78px);
+      line-height: 1.12;
+      letter-spacing: -.055em;
+      font-weight: 800;
+    }
+    .hero-subtitle { margin: 0 0 30px; font-size: clamp(16px, 2vw, 21px); opacity: .9; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      padding: 7px 13px;
+      color: rgba(255,255,255,.94);
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 99px;
+      font-size: 13px;
+      backdrop-filter: blur(10px);
+    }
+    .hero-note { margin-top: 26px; max-width: 610px; color: rgba(255,255,255,.8); font-size: 14px; text-shadow: 0 1px 12px rgba(16,42,27,.25); }
+    .hero-art { position: absolute; top: 14px; right: -8px; width: 350px; height: 350px; transform: rotate(5deg); pointer-events: none; }
+    .passport { position: absolute; inset: 34px 20px 24px 38px; padding: 20px; color: #314a38; background: rgba(246, 243, 226, .94); border: 1px solid rgba(255,255,255,.65); border-radius: 22px; box-shadow: 18px 24px 45px rgba(25,52,34,.22); }
+    .passport::before { content: ""; position: absolute; inset: 10px; border: 1px dashed rgba(72,103,80,.3); border-radius: 15px; }
+    .passport-top { position: relative; display: flex; justify-content: space-between; align-items: start; color: #77907b; font-size: 10px; letter-spacing: .14em; }
+    .passport-title { position: relative; margin-top: 27px; font-size: 13px; letter-spacing: .16em; }
+    .mountain-seal { position: relative; width: 112px; height: 112px; margin: 9px auto 8px; display: grid; place-items: center; background: #e6eddc; border: 1px solid #c4d5bd; border-radius: 50%; }
+    .mountain-seal svg { width: 112px; height: 94px; }
+    .passport-bottom { position: relative; display: flex; justify-content: space-between; color: #78907b; font-size: 10px; letter-spacing: .08em; }
+    .floating-note { position: absolute; right: -12px; bottom: 6px; padding: 9px 14px; color: #fff; background: #d07e64; border: 3px solid rgba(246,243,226,.9); border-radius: 99px; box-shadow: 9px 12px 23px rgba(80,44,32,.2); font-size: 12px; transform: rotate(-8deg); }
+    .quick-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 0 auto 22px; }
+    .quick-nav a { padding: 8px 14px; color: var(--green); background: rgba(255,253,250,.8); border: 1px solid var(--line); border-radius: 99px; box-shadow: 0 8px 20px rgba(46,66,51,.05); font-size: 12px; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+    .quick-nav a:hover { background: #fff; transform: translateY(-2px); }
+
+    main { position: relative; z-index: 2; margin-top: -54px; padding-bottom: 70px; }
+    .panel {
+      margin: 20px 0;
+      background: rgba(255,253,250,.94);
+      border: 1px solid rgba(228,231,223,.9);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .panel-head { display: flex; justify-content: space-between; gap: 20px; align-items: end; padding: 28px 30px 20px; }
+    .panel-head h2 { margin: 0; font-size: 24px; letter-spacing: -.035em; }
+    .panel-head p { margin: 5px 0 0; color: var(--muted); font-size: 14px; }
+    .section-kicker { color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+
+    .route-wrap { padding: 10px 30px 32px; }
+    .route-map { position: relative; height: 158px; margin: 0 0 13px; overflow: hidden; border: 1px solid #e2e7de; border-radius: 18px; background: linear-gradient(135deg, #f0f3e9, #fbfaf5); }
+    .route-map::before, .route-map::after { content: ""; position: absolute; border: 1px solid rgba(124,157,127,.15); border-radius: 50%; transform: rotate(-15deg); }
+    .route-map::before { width: 330px; height: 90px; top: 18px; left: -18px; }
+    .route-map::after { width: 340px; height: 110px; right: -50px; bottom: -35px; }
+    .route-map svg { width: 100%; height: 100%; display: block; }
+    .map-caption { position: absolute; top: 12px; left: 15px; color: #6f8474; font-size: 11px; letter-spacing: .12em; }
+    .map-distance { position: absolute; top: 12px; right: 15px; padding: 3px 8px; color: #6f8474; background: rgba(255,255,255,.75); border-radius: 99px; font-size: 11px; }
+    .route-strip { display: grid; grid-template-columns: repeat(7, minmax(80px, 1fr)); align-items: center; gap: 0; overflow-x: auto; padding: 20px 0 10px; }
+    .route-stop { min-width: 92px; text-align: center; position: relative; }
+    .route-stop::before { content: ""; position: absolute; top: 14px; left: -50%; width: 100%; height: 2px; background: var(--green-soft); z-index: -1; }
+    .route-stop:first-child::before { display: none; }
+    .dot { width: 30px; height: 30px; margin: 0 auto 8px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--green); border: 5px solid #eff5ec; box-shadow: 0 0 0 1px #bad2bd; font-size: 12px; }
+    .route-stop.accent .dot { background: var(--coral); box-shadow: 0 0 0 1px #ecc5b8; }
+    .route-stop strong { display: block; font-size: 13px; white-space: nowrap; }
+    .route-stop small { color: var(--muted); font-size: 11px; white-space: nowrap; }
+    .route-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 13px; }
+
+    .summary-grid { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 12px; padding: 0 30px 30px; }
+    .metric { padding: 18px; border-radius: 18px; background: #f2f5ef; }
+    .metric:first-child { color: #fff; background: var(--green); }
+    .metric-label { display: block; color: var(--muted); font-size: 12px; }
+    .metric:first-child .metric-label { color: rgba(255,255,255,.72); }
+    .metric strong { display: block; margin-top: 3px; font-size: 23px; letter-spacing: -.04em; }
+    .metric small { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; }
+    .metric:first-child small { color: rgba(255,255,255,.72); }
+
+    .day-list { padding: 0 30px 30px; }
+    .day-card { display: grid; grid-template-columns: 118px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid var(--line); }
+    .day-card:first-child { border-top: 0; }
+    .day-label { color: var(--green); font-weight: 800; }
+    .day-label span { display: block; color: var(--muted); font-size: 12px; font-weight: 500; }
+    .day-content h3 { margin: 0 0 7px; font-size: 21px; letter-spacing: -.035em; }
+    .day-content p { margin: 0; color: #506158; font-size: 14px; }
+    .day-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tag { padding: 4px 9px; color: var(--green); background: var(--green-soft); border-radius: 99px; font-size: 12px; }
+    .tag.coral { color: #9a503d; background: #f6dfd7; }
+    .schedule { margin-top: 16px; display: grid; gap: 8px; }
+    .schedule-row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 9px 12px; border-radius: 12px; background: #faf9f5; font-size: 13px; }
+    .schedule-row time { color: var(--green); font-weight: 700; }
+    .schedule-row span { color: #59685e; }
+    .tip { margin-top: 14px; padding: 12px 14px; color: #765f3a; background: #fff5df; border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; font-size: 13px; }
+    .schedule-detail { overflow: hidden; border: 1px solid transparent; border-radius: 12px; background: #faf9f5; transition: border-color .2s ease, box-shadow .2s ease; }
+    .schedule-detail:hover { border-color: #d2e0d1; }
+    .schedule-detail summary { display: grid; grid-template-columns: 96px minmax(0, 1fr) 20px; gap: 12px; align-items: start; padding: 9px 12px; color: #59685e; cursor: pointer; list-style: none; font-size: 13px; }
+    .schedule-detail summary::-webkit-details-marker { display: none; }
+    .schedule-detail summary time { color: var(--green); font-weight: 700; }
+    .schedule-detail summary span { min-width: 0; }
+    .schedule-detail summary small { display: inline-block; margin-left: 7px; color: var(--green); font-size: 10px; font-weight: 700; }
+    .schedule-detail summary::after { content: "＋"; color: var(--green); font-size: 18px; font-weight: 400; line-height: 1; text-align: right; }
+    .schedule-detail[open] { border-color: #b9cfba; box-shadow: 0 10px 24px rgba(48, 78, 55, .08); }
+    .schedule-detail[open] summary { color: var(--green-dark); background: #f3f7f0; }
+    .schedule-detail[open] summary::after { content: "−"; }
+    .schedule-detail.coral[open] { border-color: #e8b9a9; }
+    .schedule-detail.coral[open] summary { background: #fff1eb; }
+    .schedule-detail.optional[open] { border-color: #dbcda8; }
+    .schedule-detail.optional[open] summary { color: #6f5c32; background: #fff9e9; }
+    .schedule-detail.optional summary time { color: #96752d; }
+    .schedule-detail.optional summary small { color: #96752d; }
+    .schedule-expand { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(190px, .75fr); gap: 16px; padding: 13px; border-top: 1px solid #e0e9df; background: #fffdfa; }
+    .spot-body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(190px, .75fr); gap: 16px; padding: 13px; }
+    .spot-photo { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; border-radius: 12px; background: #e8eee4; }
+    .spot-copy h4 { margin: 2px 0 6px; color: var(--green-dark); font-size: 17px; letter-spacing: -.025em; }
+    .map-links { display: flex; flex-wrap: wrap; gap: 7px; margin: 9px 0 2px; }
+    .map-link { display: inline-flex; align-items: center; gap: 4px; padding: 5px 9px; color: #42664d; background: #edf5eb; border: 1px solid #d3e4d2; border-radius: 99px; font-size: 11px; text-decoration: none; }
+    .map-link.baidu { color: #48648a; background: #eef3fa; border-color: #d5e0ef; }
+    button.map-link { font: inherit; cursor: pointer; }
+    .map-link:hover { transform: translateY(-1px); box-shadow: 0 5px 12px rgba(50,80,55,.1); }
+    .map-modal { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 20px; background: rgba(29,47,34,.42); }
+    .map-modal[hidden] { display: none; }
+    .map-dialog { width: min(360px, 100%); padding: 22px; background: #fffdfa; border: 1px solid #dce7da; border-radius: 22px; box-shadow: 0 20px 60px rgba(29,47,34,.25); }
+    .map-dialog h3 { margin: 0 0 5px; color: var(--green-dark); font-size: 18px; }
+    .map-dialog p { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+    .map-choice { display: grid; gap: 9px; }
+    .map-choice button { padding: 11px 13px; color: var(--green-dark); background: #edf5eb; border: 1px solid #d3e4d2; border-radius: 12px; font: inherit; text-align: left; cursor: pointer; }
+    .map-choice button:hover { background: #e2efdf; }
+    .map-choice .close-map { color: #6c786f; background: #f7f7f3; border-color: #e5e8df; }
+    .spot-copy p { margin: 0; color: #5a6a60; font-size: 12px; line-height: 1.75; }
+    .spot-facts { display: grid; gap: 7px; margin-top: 12px; }
+    .spot-fact { padding: 8px 9px; color: #617168; background: #f2f5ef; border-radius: 9px; font-size: 11px; line-height: 1.5; }
+    .spot-fact b { color: var(--green); }
+    .spot-credit { margin-top: 10px !important; color: #87948a !important; font-size: 10px !important; line-height: 1.5 !important; }
+    .spot-credit a { color: var(--green); text-decoration: none; }
+    .image-sources { margin-top: 15px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .image-sources strong { display: block; margin-bottom: 6px; color: var(--green); font-size: 12px; }
+    .image-sources p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.75; }
+    .image-sources a { color: var(--green); }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .two-col .panel { margin: 0; }
+    .budget { padding: 0 30px 30px; }
+    .budget-total { display: flex; justify-content: space-between; gap: 18px; align-items: end; padding: 18px 20px; border-radius: 18px; color: #fff; background: linear-gradient(135deg, #486750, #719076); }
+    .budget-total strong { font-size: 34px; letter-spacing: -.05em; }
+    .budget-total span { color: rgba(255,255,255,.76); font-size: 12px; text-align: right; }
+    .bar-list { display: grid; gap: 14px; margin-top: 22px; }
+    .bar-head { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+    .bar-head span:last-child { color: var(--muted); }
+    .bar { height: 8px; margin-top: 6px; overflow: hidden; background: #edf0eb; border-radius: 99px; }
+    .bar i { display: block; height: 100%; border-radius: inherit; background: var(--green); }
+    .bar i.coral { background: var(--coral); }
+    .bar i.gold { background: var(--gold); }
+    .budget-note { margin-top: 20px; color: var(--muted); font-size: 13px; }
+    .flight-reference { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: stretch; margin-top: 20px; padding: 14px; background: linear-gradient(135deg, #eef6eb, #fff7df); border: 1px solid #d8e5d2; border-radius: 18px; }
+    .flight-option { padding: 11px 13px; background: rgba(255,255,255,.72); border-radius: 12px; }
+    .flight-option strong { display: block; color: var(--green-dark); font-size: 21px; letter-spacing: -.03em; }
+    .flight-option span { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+    .flight-saving { display: grid; place-items: center; padding: 0 12px; color: #9a6330; font-size: 12px; font-weight: 800; text-align: center; }
+    .flight-saving b { display: block; color: #c26d42; font-size: 20px; }
+
+    .red-card { margin: 0 30px 30px; padding: 20px; border: 1px solid #efd2c9; border-radius: 18px; background: #fff4ef; }
+    .red-card h3 { margin: 0 0 7px; color: #8f503f; font-size: 18px; }
+    .red-card p { margin: 0; color: #765f59; font-size: 13px; }
+    .red-card a { color: #8f503f; font-weight: 700; }
+
+    .checklist { padding: 0 30px 30px; }
+    .checklist-list { display: grid; gap: 9px; }
+    .check-item { display: flex; gap: 11px; align-items: flex-start; padding: 11px 13px; border-radius: 13px; background: #faf9f5; color: #506158; font-size: 13px; cursor: pointer; }
+    .check-item input { width: 17px; height: 17px; margin: 2px 0 0; accent-color: var(--green); flex: 0 0 auto; }
+    .check-item:has(input:checked) span { color: #9aa69d; text-decoration: line-through; }
+    .reset { margin-top: 15px; border: 0; color: var(--green); background: transparent; cursor: pointer; font-size: 12px; padding: 0; }
+    .sources { padding: 0 30px 30px; color: var(--muted); font-size: 12px; }
+    .sources a { color: var(--green); }
+    footer { padding: 0 20px 35px; color: #879087; text-align: center; font-size: 12px; }
+
+    @media (max-width: 820px) {
+      .hero { min-height: 490px; padding-top: 54px; }
+      .hero-art { opacity: .22; right: -90px; transform: scale(.85) rotate(5deg); }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .summary-grid .metric:first-child { grid-column: 1 / -1; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero-inner, main { width: min(100% - 24px, 1120px); }
+      .hero { padding: 42px 12px 92px; }
+      .hero-art { display: none; }
+      h1 { font-size: 42px; }
+      .panel { border-radius: 22px; }
+      .panel-head { display: block; padding: 23px 19px 16px; }
+      .route-wrap, .day-list, .budget, .checklist, .sources { padding-left: 19px; padding-right: 19px; }
+      .route-strip { margin: 0 -19px; padding-left: 19px; padding-right: 19px; }
+      .route-map { height: 130px; }
+      .route-foot { display: block; }
+      .route-foot span { display: block; margin-top: 5px; }
+      .summary-grid { padding: 0 19px 19px; gap: 9px; }
+      .metric { padding: 13px; }
+      .metric strong { font-size: 19px; }
+      .day-card { display: block; }
+      .day-label { margin-bottom: 8px; }
+      .schedule-row { grid-template-columns: 78px 1fr; }
+      .schedule-detail summary { grid-template-columns: 78px minmax(0, 1fr) 18px; }
+      .schedule-expand { grid-template-columns: 1fr; }
+      .spot-body { grid-template-columns: 1fr; }
+      .red-card { margin: 0 19px 19px; }
+      .budget-total strong { font-size: 28px; }
+      .flight-reference { grid-template-columns: 1fr 1fr; }
+      .flight-saving { grid-column: 1 / -1; padding: 10px 0 2px; }
+    }
+    @media print {
+      .hero { min-height: auto; padding: 40px 20px; }
+      .hero::after { display: none; }
+      main { margin-top: 20px; }
+      .panel { box-shadow: none; break-inside: avoid; }
+      .checklist input { print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero"><div class="hero-inner"><div class="eyebrow">MIDWAY DEPARTMENT TRIP · FUJIAN EDITION</div><h1>泉州市区 · 2.5天<br>闽南古城部门旅行</h1><p class="hero-subtitle">开元寺 · 西街 · 闽南小吃 · 古城慢游</p><div class="chips"><span class="chip">📅 2026.08.21 — 08.23</span><span class="chip">👥 14人 · 11人有预算</span><span class="chip">📍 广州黄埔出发</span><span class="chip">🚄 高铁/大交通自理</span></div><p class="hero-note">福建候选中，本页只住泉州、不跨市：把时间留给古城、美食、茶馆和夜间慢逛。</p><div class="hero-art"><div class="passport"><div class="passport-top"><span>TRAVEL NOTE</span><span>QZ · 08</span></div><div class="passport-title">QUANZHOU CITY EDITION</div><div class="mountain-seal"><svg viewBox="0 0 120 100"><path d="M8 73 Q30 48 50 70 Q73 30 112 73" fill="#cf8066"/><path d="M0 76 Q35 64 120 79 L120 100 L0 100Z" fill="#2d6663"/><path d="M6 82 Q47 76 117 86" fill="none" stroke="#fff" stroke-width="3" opacity=".8"/></svg></div><div class="passport-bottom"><span>2.5 DAYS</span><span>14 TRAVELERS</span></div></div><div class="floating-note">古城见面，慢慢吃</div></div></div></header>
+  <main><nav class="quick-nav"><a href="#route">路线全览</a><a href="#days">每日行程</a><a href="#budget">预算概览</a><a href="#checklist">出发清单</a></nav>
+  <section class="panel" id="route"><div class="panel-head"><div><div class="section-kicker">OLD CITY ROUTE</div><h2>路线全览</h2><p>住泉州两晚，只玩泉州古城及市区。</p></div><span class="tag">不跨市主方案</span></div><div class="route-wrap"><div class="route-map"><svg viewBox="0 0 1000 160" preserveAspectRatio="none"><path d="M65 105 C190 42, 270 130, 390 78 S600 35, 760 86 S870 120, 940 55" fill="none" stroke="#6f9278" stroke-width="4" stroke-dasharray="8 8"/><g fill="#fffdfa" stroke="#4f7860" stroke-width="4"><circle cx="65" cy="105" r="12"/><circle cx="245" cy="88" r="12"/><circle cx="430" cy="75" r="12"/><circle cx="620" cy="58" r="12"/><circle cx="790" cy="85" r="12"/><circle cx="940" cy="55" r="12"/></g><g fill="#cf8066" stroke="#fffdfa" stroke-width="5"><circle cx="430" cy="75" r="7"/><circle cx="620" cy="58" r="7"/><circle cx="790" cy="85" r="7"/></g><g fill="#4f7058" font-size="15" font-weight="700" text-anchor="middle"><text x="65" y="137">黄埔</text><text x="245" y="120">广州南</text><text x="430" y="42">开元寺</text><text x="620" y="27">西街</text><text x="790" y="118">涂门街</text><text x="940" y="28">返程</text></g></svg><span class="map-caption">QUANZHOU · OLD CITY ROUTE</span><span class="map-distance">古城线 · 慢慢逛</span></div><div class="route-strip"><div class="route-stop"><div class="dot">出</div><strong>黄埔</strong><small>8/21</small></div><div class="route-stop"><div class="dot">🚄</div><strong>广州南</strong><small>高铁</small></div><div class="route-stop accent"><div class="dot">⛩</div><strong>开元寺</strong><small>古城地标</small></div><div class="route-stop"><div class="dot">🍜</div><strong>西街</strong><small>吃逛</small></div><div class="route-stop"><div class="dot">🏮</div><strong>涂门街</strong><small>古城文化</small></div><div class="route-stop"><div class="dot">返</div><strong>广州南</strong><small>8/23</small></div></div><div class="route-foot"><span>市内：4 / 4 / 3 / 3 分组滴滴</span><span>不跨市 · 不包大巴</span></div></div><div class="summary-grid"><div class="metric"><span class="metric-label">公司预算上限</span><strong>¥12,320</strong><small>大交通个人自理</small></div><div class="metric"><span class="metric-label">计划公共费用</span><strong>¥12,220</strong><small>留 ¥100 机动</small></div><div class="metric"><span class="metric-label">住宿</span><strong>2晚</strong><small>泉州古城附近</small></div><div class="metric"><span class="metric-label">分组</span><strong>4 / 4 / 3 / 3</strong><small>每车最多4人</small></div></div></section>
+  <section class="panel" id="days"><div class="panel-head"><div><div class="section-kicker">SLOW TRAVEL PLAN</div><h2>每日行程</h2><p>泉州以古城步行、美食和茶馆为主，不把行程排成景点打卡。</p></div></div><div class="day-list"><article class="day-card"><div class="day-label">DAY 0<span>8月21日 · 周五</span></div><div class="day-content"><h3>黄埔 → 广州南 → 泉州 · 抵达先吃夜宵</h3><p>抵达后不再安排景点，先入住，再去古城附近吃一顿闽南夜宵。</p><div class="day-meta"><span class="tag coral">🚄 高铁自理</span><span class="tag">🍜 闽南夜宵</span><span class="tag">🛏️ 入住</span></div><div class="schedule"><div class="schedule-row"><time>周五下午</time><span>黄埔出发，按 4 / 4 / 3 / 3 分组前往广州南；具体时间待确认</span></div><div class="schedule-row"><time>待确认</time><span>广州南 → 泉州/泉州东，车次与时间待确认</span></div><div class="schedule-row"><time>22:00 后</time><span>酒店入住，附近烧肉粽、面线糊、四果汤或烧烤</span></div></div><div class="tip">💡 夜宵优先选酒店步行或短途打车可到的店，抵达晚就不再赶景点。</div></div></article><article class="day-card"><div class="day-label">DAY 1<span>8月22日 · 周六</span></div><div class="day-content"><h3>开元寺 → 西街 → 涂门街 → 闽南美食</h3><p>上午古城文化，午后休息喝茶，傍晚继续吃逛；全程只在泉州古城内活动。</p><div class="day-meta"><span class="tag coral">⛩️ 开元寺</span><span class="tag">🍜 西街</span><span class="tag">🏮 涂门街</span><span class="tag">🍵 闽南茶</span></div><div class="schedule"><div class="schedule-row"><time>08:30–09:30</time><span>早餐：面线糊、肉粽或当地小吃</span></div><details class="schedule-detail coral"><summary><time>09:30–11:00</time><span>开元寺：东西塔和古寺短逛<small>点击展开图片</small></span></summary><div class="schedule-expand"><img class="spot-photo" src="assets/quanzhou/image-02.jpg" alt="泉州开元寺"><div class="spot-copy"><h4>泉州古城最有辨识度的一站</h4><div class="map-links"><button class="map-link map-choose" type="button" data-place="泉州开元寺" data-amap="https://uri.amap.com/search?keyword=泉州开元寺&amp;city=泉州" data-baidu="https://map.baidu.com/search/泉州开元寺" data-didi="https://webapp.didi.cn/">📍 打开地图</button></div><p>看东西塔、古寺建筑和闽南细节，安排 1–1.5 小时即可，不做长时间讲解。</p><div class="spot-facts"><div class="spot-fact"><b>适合介绍：</b>泉州古城的第一张名片</div><div class="spot-fact"><b>拍照提示：</b>东西塔、红墙和古榕树适合团队合照</div></div></div></div></details><details class="schedule-detail"><summary><time>11:00–13:30</time><span>西街慢逛：小吃、伴手礼和午餐<small>点击展开图片</small></span></summary><div class="schedule-expand"><img class="spot-photo" src="assets/quanzhou/image-03.jpg" alt="泉州西街"><div class="spot-copy"><h4>把中午留给泉州烟火气</h4><div class="map-links"><button class="map-link map-choose" type="button" data-place="泉州西街" data-amap="https://uri.amap.com/search?keyword=泉州西街&amp;city=泉州" data-baidu="https://map.baidu.com/search/泉州西街" data-didi="https://webapp.didi.cn/">📍 打开地图</button></div><p>西街适合边走边吃，面线糊、肉粽、润饼、姜母鸭和四果汤都可以分组自由选择。</p><div class="spot-facts"><div class="spot-fact"><b>安排原则：</b>不统一塞满餐厅，给同事自由选择空间</div><div class="spot-fact"><b>购物提示：</b>伴手礼集中在古城内解决</div></div></div></div></details><div class="schedule-row"><time>13:30–16:00</time><span>回酒店午休，或在古城茶馆喝茶</span></div><details class="schedule-detail optional"><summary><time>16:00–18:00</time><span>涂门街、关岳庙：短逛与团队合照<small>点击展开图片</small></span></summary><div class="schedule-expand"><img class="spot-photo" src="assets/quanzhou/image-04.jpg" alt="泉州通淮关岳庙"><div class="spot-copy"><h4>下午轻量古城文化线</h4><div class="map-links"><button class="map-link map-choose" type="button" data-place="泉州通淮关岳庙" data-amap="https://uri.amap.com/search?keyword=泉州通淮关岳庙&amp;city=泉州" data-baidu="https://map.baidu.com/search/泉州通淮关岳庙" data-didi="https://webapp.didi.cn/">📍 打开地图</button></div><p>涂门街一带适合短逛、拍照和喝茶；关岳庙是否开放及拍照规则出发前再核验。</p><div class="spot-facts"><div class="spot-fact"><b>团建提示：</b>爱国团建点位另行核验后安排 20–30 分钟打卡</div><div class="spot-fact"><b>节奏提示：</b>如果天气炎热，就把时间改为茶馆和晚餐</div></div></div></div></details><div class="schedule-row"><time>18:30–20:30</time><span>泉州闽南菜团餐：姜母鸭、海蛎煎、烧肉粽等</span></div></div><div class="tip">💡 泉州 8 月下旬炎热，古城线尽量早出发、午后休息，晚上再吃逛。</div></div></article><article class="day-card"><div class="day-label">DAY 2<span>8月23日 · 周日</span></div><div class="day-content"><h3>古城补逛 → 午餐 → 返程</h3><p>不跨市、不去平潭或厦门，保留返程缓冲。</p><div class="day-meta"><span class="tag coral">★ 红色团建</span><span class="tag">🍵 茶馆</span><span class="tag">🛍️ 伴手礼</span><span class="tag">🚄 返程</span></div><div class="schedule"><div class="schedule-row"><time>08:30–10:00</time><span>早餐、退房、行李寄存；按核验结果完成爱国团建打卡</span></div><details class="schedule-detail"><summary><time>10:00–12:00</time><span>中山路、府文庙周边补逛，买伴手礼<small>点击展开图片</small></span></summary><div class="schedule-expand"><img class="spot-photo" src="assets/quanzhou/image-05.jpg" alt="泉州府文庙"><div class="spot-copy"><h4>返程前的古城补逛</h4><div class="map-links"><button class="map-link map-choose" type="button" data-place="泉州府文庙" data-amap="https://uri.amap.com/search?keyword=泉州府文庙&amp;city=泉州" data-baidu="https://map.baidu.com/search/泉州府文庙" data-didi="https://webapp.didi.cn/">📍 打开地图</button></div><p>府文庙和中山路适合短逛、拍照、买伴手礼；不再安排远距离景点，给返程留足时间。</p><div class="spot-facts"><div class="spot-fact"><b>安排原则：</b>古城内短距离移动，随时可收队</div></div></div></div></details><div class="schedule-row"><time>12:00–13:30</time><span>泉州午餐，预留充足用餐时间</span></div><div class="schedule-row"><time>13:30–15:30</time><span>古城茶馆/咖啡馆休息，统一点名</span></div><div class="schedule-row"><time>16:00 后</time><span>前往泉州站/泉州东站，按返程车次倒推</span></div></div><div class="tip">💡 返程建议选择 18:00 以后车次；车次较早就取消下午自由活动。</div></div></article></div></section>
+  <section class="panel" id="patriotic"><div class="panel-head"><div><div class="section-kicker">PATRIOTIC TEAM BUILDING</div><h2>爱国团建</h2><p>100 元/人专项做轻量、庄重、有记录的主题打卡。</p></div></div><div class="red-card"><h3>泉州市革命烈士陵园</h3><p>安排 20–30 分钟瞻仰、简短介绍和指定区域合照，保持庄重安静；该点位属于泉州红色教育资源，具体开放、预约和拍照规则出发前再核验。</p><p style="margin-top:12px"><button class="map-link map-choose" type="button" data-place="泉州市革命烈士陵园" data-amap="https://uri.amap.com/search?keyword=泉州市革命烈士陵园&amp;city=泉州" data-baidu="https://map.baidu.com/search/泉州市革命烈士陵园" data-didi="https://webapp.didi.cn/">📍 打开地图</button> <a href="https://tyjrswt.fujian.gov.cn/xwzx/gzdt/202307/t20230720_6210477.htm" target="_blank" rel="noreferrer">查看公开信息 ↗</a></p></div></section><div class="two-col"><section class="panel" id="budget"><div class="panel-head"><div><div class="section-kicker">BUDGET</div><h2>预算概览</h2><p>大交通个人自理；活动费用先按 11 人额度报销，再平均发放给 14 人。</p></div></div><div class="budget"><div class="budget-total"><strong>¥12,220</strong><span>活动公共费用预估<br>大交通个人自理</span></div><div class="bar-list"><div><div class="bar-head"><span>住宿</span><span>¥4,200</span></div><div class="bar"><i style="width:34%"></i></div></div><div><div class="bar-head"><span>市内交通</span><span>¥2,200</span></div><div class="bar"><i class="coral" style="width:18%"></i></div></div><div><div class="bar-head"><span>餐饮</span><span>¥3,000</span></div><div class="bar"><i style="width:24%"></i></div></div><div><div class="bar-head"><span>景点/团建/机动</span><span>¥2,820</span></div><div class="bar"><i class="gold" style="width:23%"></i></div></div></div><p class="budget-note">泉州古城以步行和分组滴滴为主，不包大巴；夜间消费、个人购物自理。</p></div></section><section class="panel" id="checklist"><div class="panel-head"><div><div class="section-kicker">CHECKLIST</div><h2>出发前清单</h2><p>勾选状态保存在当前浏览器。</p></div></div><div class="checklist"><div class="checklist-list"><label class="check-item"><input type="checkbox" data-check="policy"><span>确认 11 人额度报销活动费，余额再平均发放给 14 人</span></label><label class="check-item"><input type="checkbox" data-check="train"><span>确认广州南往返泉州车次、车站和行李安排</span></label><label class="check-item"><input type="checkbox" data-check="hotel"><span>锁定泉州古城附近酒店 2 晚</span></label><label class="check-item"><input type="checkbox" data-check="food"><span>提前收集西街、涂门街、钟楼附近餐饮备选</span></label><label class="check-item"><input type="checkbox" data-check="red"><span>核验泉州本地爱国团建点位、开放和拍照规则</span></label><label class="check-item"><input type="checkbox" data-check="weather"><span>出发前 1–3 天查看天气、台风和交通动态</span></label></div><button class="reset" id="resetChecks" type="button">清空本机勾选记录</button></div></section></div><section class="panel" id="sources"><div class="panel-head"><div><div class="section-kicker">SOURCES</div><h2>信息核验入口</h2><p>页面可离线打开，以下链接用于联网时查看最新信息。</p></div></div><div class="sources"><a href="https://www.quanzhou.gov.cn/lyb/lytj/" target="_blank" rel="noreferrer">泉州市政府旅游推荐 ↗</a>　<a href="https://quanzhou.gov.cn/lyb/lyxw/202601/t20260119_3258243.htm" target="_blank" rel="noreferrer">泉州美食线路参考 ↗</a>　<a href="https://www.12306.cn/" target="_blank" rel="noreferrer">12306 高铁购票 ↗</a></div></section><footer>泉州部门中途旅游 · 泉州古城主方案 · 2026.08.21—08.23 · 本地 HTML 版</footer></main>
+  <div class="map-modal" id="mapModal" hidden><div class="map-dialog" role="dialog" aria-modal="true"><h3>选择地图</h3><p id="mapDialogPlace">请选择要使用的地图应用</p><div class="map-choice"><button type="button" id="openAmap">🟢 使用高德地图</button><button type="button" id="openBaidu">🔵 使用百度地图</button><button type="button" id="openDidi">🟠 使用滴滴（输入目的地）</button><button type="button" class="close-map" id="closeMap">暂不打开</button></div></div></div><script>(function(){const key='quanzhou-trip-checklist-v1',boxes=[...document.querySelectorAll('[data-check]')],modal=document.getElementById('mapModal'),place=document.getElementById('mapDialogPlace');let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}boxes.forEach(b=>{b.checked=!!saved[b.dataset.check];b.addEventListener('change',()=>{saved[b.dataset.check]=b.checked;try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}})});document.getElementById('resetChecks').onclick=()=>{boxes.forEach(b=>b.checked=false);saved={};try{localStorage.removeItem(key)}catch(e){}};let map={};document.querySelectorAll('.map-choose').forEach(b=>b.onclick=()=>{map={a:b.dataset.amap,d:b.dataset.baidu,dd:b.dataset.didi};place.textContent=b.dataset.place+' · 请选择要使用的地图';modal.hidden=false});document.getElementById('openAmap').onclick=()=>{open(map.a,'_blank');modal.hidden=true};document.getElementById('openBaidu').onclick=()=>{open(map.d,'_blank');modal.hidden=true};document.getElementById('openDidi').onclick=()=>{open(map.dd,'_blank');modal.hidden=true};document.getElementById('openDidi').onclick=()=>{open(map.dd,'_blank');modal.hidden=true};document.getElementById('closeMap').onclick=()=>modal.hidden=true;modal.onclick=e=>{if(e.target===modal)modal.hidden=true}})();</script>
+</body>
+
+
+</html>

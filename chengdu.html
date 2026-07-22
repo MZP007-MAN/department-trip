@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#486750">
+  <title>成都 · 2.5天部门中途旅游</title>
+  <style>
+    :root {
+      --ink: #24352c;
+      --muted: #718076;
+      --green: #486750;
+      --green-dark: #294536;
+      --green-soft: #dce8dc;
+      --cream: #f6f3ed;
+      --paper: #fffdfa;
+      --line: #e4e7df;
+      --gold: #d39a47;
+      --coral: #d27f65;
+      --shadow: 0 24px 70px rgba(46, 66, 51, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+
+    .hero {
+      min-height: 535px;
+      padding: 76px 24px 110px;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(24, 61, 41, .95) 0%, rgba(38, 82, 55, .78) 47%, rgba(58, 91, 61, .38) 100%),
+        url("assets/chengdu/image-01.jpg") center 46% / cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -110px -10%;
+      height: 210px;
+      background: var(--cream);
+      border-radius: 50% 50% 0 0 / 55% 55% 0 0;
+    }
+    .hero-inner, main { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    .hero-inner { position: relative; }
+    .eyebrow { opacity: .84; letter-spacing: .16em; font-size: 12px; text-transform: uppercase; }
+    h1 {
+      margin: 20px 0 10px;
+      font-size: clamp(38px, 7vw, 78px);
+      line-height: 1.12;
+      letter-spacing: -.055em;
+      font-weight: 800;
+    }
+    .hero-subtitle { margin: 0 0 30px; font-size: clamp(16px, 2vw, 21px); opacity: .9; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      padding: 7px 13px;
+      color: rgba(255,255,255,.94);
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 99px;
+      font-size: 13px;
+      backdrop-filter: blur(10px);
+    }
+    .hero-note { margin-top: 26px; max-width: 610px; color: rgba(255,255,255,.8); font-size: 14px; text-shadow: 0 1px 12px rgba(16,42,27,.25); }
+    .hero-art { position: absolute; top: 14px; right: -8px; width: 350px; height: 350px; transform: rotate(5deg); pointer-events: none; }
+    .passport { position: absolute; inset: 34px 20px 24px 38px; padding: 20px; color: #314a38; background: rgba(246, 243, 226, .94); border: 1px solid rgba(255,255,255,.65); border-radius: 22px; box-shadow: 18px 24px 45px rgba(25,52,34,.22); }
+    .passport::before { content: ""; position: absolute; inset: 10px; border: 1px dashed rgba(72,103,80,.3); border-radius: 15px; }
+    .passport-top { position: relative; display: flex; justify-content: space-between; align-items: start; color: #77907b; font-size: 10px; letter-spacing: .14em; }
+    .passport-title { position: relative; margin-top: 27px; font-size: 13px; letter-spacing: .16em; }
+    .panda-seal { position: relative; width: 112px; height: 112px; margin: 9px auto 8px; display: grid; place-items: center; background: #e6eddc; border: 1px solid #c4d5bd; border-radius: 50%; font-size: 66px; filter: saturate(.9); }
+    .panda-seal::after { content: "成都 · 2026"; position: absolute; bottom: 5px; color: #64816b; font-size: 9px; letter-spacing: .08em; }
+    .passport-bottom { position: relative; display: flex; justify-content: space-between; color: #78907b; font-size: 10px; letter-spacing: .08em; }
+    .floating-note { position: absolute; right: -12px; bottom: 6px; padding: 9px 14px; color: #fff; background: #d07e64; border: 3px solid rgba(246,243,226,.9); border-radius: 99px; box-shadow: 9px 12px 23px rgba(80,44,32,.2); font-size: 12px; transform: rotate(-8deg); }
+    .quick-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 0 auto 22px; }
+    .quick-nav a { padding: 8px 14px; color: var(--green); background: rgba(255,253,250,.8); border: 1px solid var(--line); border-radius: 99px; box-shadow: 0 8px 20px rgba(46,66,51,.05); font-size: 12px; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+    .quick-nav a:hover { background: #fff; transform: translateY(-2px); }
+
+    main { position: relative; z-index: 2; margin-top: -54px; padding-bottom: 70px; }
+    .panel {
+      margin: 20px 0;
+      background: rgba(255,253,250,.94);
+      border: 1px solid rgba(228,231,223,.9);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .panel-head { display: flex; justify-content: space-between; gap: 20px; align-items: end; padding: 28px 30px 20px; }
+    .panel-head h2 { margin: 0; font-size: 24px; letter-spacing: -.035em; }
+    .panel-head p { margin: 5px 0 0; color: var(--muted); font-size: 14px; }
+    .section-kicker { color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+
+    .route-wrap { padding: 10px 30px 32px; }
+    .route-map { position: relative; height: 158px; margin: 0 0 13px; overflow: hidden; border: 1px solid #e2e7de; border-radius: 18px; background: linear-gradient(135deg, #f0f3e9, #fbfaf5); }
+    .route-map::before, .route-map::after { content: ""; position: absolute; border: 1px solid rgba(124,157,127,.15); border-radius: 50%; transform: rotate(-15deg); }
+    .route-map::before { width: 330px; height: 90px; top: 18px; left: -18px; }
+    .route-map::after { width: 340px; height: 110px; right: -50px; bottom: -35px; }
+    .route-map svg { width: 100%; height: 100%; display: block; }
+    .map-caption { position: absolute; top: 12px; left: 15px; color: #6f8474; font-size: 11px; letter-spacing: .12em; }
+    .map-distance { position: absolute; top: 12px; right: 15px; padding: 3px 8px; color: #6f8474; background: rgba(255,255,255,.75); border-radius: 99px; font-size: 11px; }
+    .route-strip { display: grid; grid-template-columns: repeat(7, minmax(80px, 1fr)); align-items: center; gap: 0; overflow-x: auto; padding: 20px 0 10px; }
+    .route-stop { min-width: 92px; text-align: center; position: relative; }
+    .route-stop::before { content: ""; position: absolute; top: 14px; left: -50%; width: 100%; height: 2px; background: var(--green-soft); z-index: -1; }
+    .route-stop:first-child::before { display: none; }
+    .dot { width: 30px; height: 30px; margin: 0 auto 8px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--green); border: 5px solid #eff5ec; box-shadow: 0 0 0 1px #bad2bd; font-size: 12px; }
+    .route-stop.accent .dot { background: var(--coral); box-shadow: 0 0 0 1px #ecc5b8; }
+    .route-stop strong { display: block; font-size: 13px; white-space: nowrap; }
+    .route-stop small { color: var(--muted); font-size: 11px; white-space: nowrap; }
+    .route-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 13px; }
+
+    .summary-grid { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 12px; padding: 0 30px 30px; }
+    .metric { padding: 18px; border-radius: 18px; background: #f2f5ef; }
+    .metric:first-child { color: #fff; background: var(--green); }
+    .metric-label { display: block; color: var(--muted); font-size: 12px; }
+    .metric:first-child .metric-label { color: rgba(255,255,255,.72); }
+    .metric strong { display: block; margin-top: 3px; font-size: 23px; letter-spacing: -.04em; }
+    .metric small { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; }
+    .metric:first-child small { color: rgba(255,255,255,.72); }
+
+    .day-list { padding: 0 30px 30px; }
+    .day-card { display: grid; grid-template-columns: 118px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid var(--line); }
+    .day-card:first-child { border-top: 0; }
+    .day-label { color: var(--green); font-weight: 800; }
+    .day-label span { display: block; color: var(--muted); font-size: 12px; font-weight: 500; }
+    .day-content h3 { margin: 0 0 7px; font-size: 21px; letter-spacing: -.035em; }
+    .day-content p { margin: 0; color: #506158; font-size: 14px; }
+    .day-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tag { padding: 4px 9px; color: var(--green); background: var(--green-soft); border-radius: 99px; font-size: 12px; }
+    .tag.coral { color: #9a503d; background: #f6dfd7; }
+    .schedule { margin-top: 16px; display: grid; gap: 8px; }
+    .schedule-row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 9px 12px; border-radius: 12px; background: #faf9f5; font-size: 13px; }
+    .schedule-row time { color: var(--green); font-weight: 700; }
+    .schedule-row span { color: #59685e; }
+    .tip { margin-top: 14px; padding: 12px 14px; color: #765f3a; background: #fff5df; border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; font-size: 13px; }
+    .schedule-detail { overflow: hidden; border: 1px solid transparent; border-radius: 12px; background: #faf9f5; transition: border-color .2s ease, box-shadow .2s ease; }
+    .schedule-detail:hover { border-color: #d2e0d1; }
+    .schedule-detail summary { display: grid; grid-template-columns: 96px minmax(0, 1fr) 20px; gap: 12px; align-items: start; padding: 9px 12px; color: #59685e; cursor: pointer; list-style: none; font-size: 13px; }
+    .schedule-detail summary::-webkit-details-marker { display: none; }
+    .schedule-detail summary time { color: var(--green); font-weight: 700; }
+    .schedule-detail summary span { min-width: 0; }
+    .schedule-detail summary small { display: inline-block; margin-left: 7px; color: var(--green); font-size: 10px; font-weight: 700; }
+    .schedule-detail summary::after { content: "＋"; color: var(--green); font-size: 18px; font-weight: 400; line-height: 1; text-align: right; }
+    .schedule-detail[open] { border-color: #b9cfba; box-shadow: 0 10px 24px rgba(48, 78, 55, .08); }
+    .schedule-detail[open] summary { color: var(--green-dark); background: #f3f7f0; }
+    .schedule-detail[open] summary::after { content: "−"; }
+    .schedule-detail.coral[open] { border-color: #e8b9a9; }
+    .schedule-detail.coral[open] summary { background: #fff1eb; }
+    .schedule-detail.optional[open] { border-color: #dbcda8; }
+    .schedule-detail.optional[open] summary { color: #6f5c32; background: #fff9e9; }
+    .schedule-detail.optional summary time { color: #96752d; }
+    .schedule-detail.optional summary small { color: #96752d; }
+    .schedule-expand { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(190px, .75fr); gap: 16px; padding: 13px; border-top: 1px solid #e0e9df; background: #fffdfa; }
+    .spot-body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(190px, .75fr); gap: 16px; padding: 13px; }
+    .spot-photo { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; border-radius: 12px; background: #e8eee4; }
+    .spot-copy h4 { margin: 2px 0 6px; color: var(--green-dark); font-size: 17px; letter-spacing: -.025em; }
+    .map-links { display: flex; flex-wrap: wrap; gap: 7px; margin: 9px 0 2px; }
+    .map-link { display: inline-flex; align-items: center; gap: 4px; padding: 5px 9px; color: #42664d; background: #edf5eb; border: 1px solid #d3e4d2; border-radius: 99px; font-size: 11px; text-decoration: none; }
+    .map-link.baidu { color: #48648a; background: #eef3fa; border-color: #d5e0ef; }
+    button.map-link { font: inherit; cursor: pointer; }
+    .map-link:hover { transform: translateY(-1px); box-shadow: 0 5px 12px rgba(50,80,55,.1); }
+    .map-modal { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 20px; background: rgba(29,47,34,.42); }
+    .map-modal[hidden] { display: none; }
+    .map-dialog { width: min(360px, 100%); padding: 22px; background: #fffdfa; border: 1px solid #dce7da; border-radius: 22px; box-shadow: 0 20px 60px rgba(29,47,34,.25); }
+    .map-dialog h3 { margin: 0 0 5px; color: var(--green-dark); font-size: 18px; }
+    .map-dialog p { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+    .map-choice { display: grid; gap: 9px; }
+    .map-choice button { padding: 11px 13px; color: var(--green-dark); background: #edf5eb; border: 1px solid #d3e4d2; border-radius: 12px; font: inherit; text-align: left; cursor: pointer; }
+    .map-choice button:hover { background: #e2efdf; }
+    .map-choice .close-map { color: #6c786f; background: #f7f7f3; border-color: #e5e8df; }
+    .spot-copy p { margin: 0; color: #5a6a60; font-size: 12px; line-height: 1.75; }
+    .spot-facts { display: grid; gap: 7px; margin-top: 12px; }
+    .spot-fact { padding: 8px 9px; color: #617168; background: #f2f5ef; border-radius: 9px; font-size: 11px; line-height: 1.5; }
+    .spot-fact b { color: var(--green); }
+    .spot-credit { margin-top: 10px !important; color: #87948a !important; font-size: 10px !important; line-height: 1.5 !important; }
+    .spot-credit a { color: var(--green); text-decoration: none; }
+    .image-sources { margin-top: 15px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .image-sources strong { display: block; margin-bottom: 6px; color: var(--green); font-size: 12px; }
+    .image-sources p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.75; }
+    .image-sources a { color: var(--green); }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .two-col .panel { margin: 0; }
+    .budget { padding: 0 30px 30px; }
+    .budget-total { display: flex; justify-content: space-between; gap: 18px; align-items: end; padding: 18px 20px; border-radius: 18px; color: #fff; background: linear-gradient(135deg, #486750, #719076); }
+    .budget-total strong { font-size: 34px; letter-spacing: -.05em; }
+    .budget-total span { color: rgba(255,255,255,.76); font-size: 12px; text-align: right; }
+    .bar-list { display: grid; gap: 14px; margin-top: 22px; }
+    .bar-head { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+    .bar-head span:last-child { color: var(--muted); }
+    .bar { height: 8px; margin-top: 6px; overflow: hidden; background: #edf0eb; border-radius: 99px; }
+    .bar i { display: block; height: 100%; border-radius: inherit; background: var(--green); }
+    .bar i.coral { background: var(--coral); }
+    .bar i.gold { background: var(--gold); }
+    .budget-note { margin-top: 20px; color: var(--muted); font-size: 13px; }
+    .flight-reference { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: stretch; margin-top: 20px; padding: 14px; background: linear-gradient(135deg, #eef6eb, #fff7df); border: 1px solid #d8e5d2; border-radius: 18px; }
+    .flight-option { padding: 11px 13px; background: rgba(255,255,255,.72); border-radius: 12px; }
+    .flight-option strong { display: block; color: var(--green-dark); font-size: 21px; letter-spacing: -.03em; }
+    .flight-option span { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+    .flight-saving { display: grid; place-items: center; padding: 0 12px; color: #9a6330; font-size: 12px; font-weight: 800; text-align: center; }
+    .flight-saving b { display: block; color: #c26d42; font-size: 20px; }
+
+    .red-card { margin: 0 30px 30px; padding: 20px; border: 1px solid #efd2c9; border-radius: 18px; background: #fff4ef; }
+    .red-card h3 { margin: 0 0 7px; color: #8f503f; font-size: 18px; }
+    .red-card p { margin: 0; color: #765f59; font-size: 13px; }
+    .red-card a { color: #8f503f; font-weight: 700; }
+
+    .checklist { padding: 0 30px 30px; }
+    .checklist-list { display: grid; gap: 9px; }
+    .check-item { display: flex; gap: 11px; align-items: flex-start; padding: 11px 13px; border-radius: 13px; background: #faf9f5; color: #506158; font-size: 13px; cursor: pointer; }
+    .check-item input { width: 17px; height: 17px; margin: 2px 0 0; accent-color: var(--green); flex: 0 0 auto; }
+    .check-item:has(input:checked) span { color: #9aa69d; text-decoration: line-through; }
+    .reset { margin-top: 15px; border: 0; color: var(--green); background: transparent; cursor: pointer; font-size: 12px; padding: 0; }
+    .sources { padding: 0 30px 30px; color: var(--muted); font-size: 12px; }
+    .sources a { color: var(--green); }
+    footer { padding: 0 20px 35px; color: #879087; text-align: center; font-size: 12px; }
+
+    @media (max-width: 820px) {
+      .hero { min-height: 490px; padding-top: 54px; }
+      .hero-art { opacity: .22; right: -90px; transform: scale(.85) rotate(5deg); }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .summary-grid .metric:first-child { grid-column: 1 / -1; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero-inner, main { width: min(100% - 24px, 1120px); }
+      .hero { padding: 42px 12px 92px; }
+      .hero-art { display: none; }
+      h1 { font-size: 42px; }
+      .panel { border-radius: 22px; }
+      .panel-head { display: block; padding: 23px 19px 16px; }
+      .route-wrap, .day-list, .budget, .checklist, .sources { padding-left: 19px; padding-right: 19px; }
+      .route-strip { margin: 0 -19px; padding-left: 19px; padding-right: 19px; }
+      .route-map { height: 130px; }
+      .route-foot { display: block; }
+      .route-foot span { display: block; margin-top: 5px; }
+      .summary-grid { padding: 0 19px 19px; gap: 9px; }
+      .metric { padding: 13px; }
+      .metric strong { font-size: 19px; }
+      .day-card { display: block; }
+      .day-label { margin-bottom: 8px; }
+      .schedule-row { grid-template-columns: 78px 1fr; }
+      .schedule-detail summary { grid-template-columns: 78px minmax(0, 1fr) 18px; }
+      .schedule-expand { grid-template-columns: 1fr; }
+      .spot-body { grid-template-columns: 1fr; }
+      .red-card { margin: 0 19px 19px; }
+      .budget-total strong { font-size: 28px; }
+      .flight-reference { grid-template-columns: 1fr 1fr; }
+      .flight-saving { grid-column: 1 / -1; padding: 10px 0 2px; }
+    }
+    @media print {
+      .hero { min-height: auto; padding: 40px 20px; }
+      .hero::after { display: none; }
+      main { margin-top: 20px; }
+      .panel { box-shadow: none; break-inside: avoid; }
+      .checklist input { print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">MIDWAY DEPARTMENT TRIP · LOCAL EDITION</div>
+      <h1>成都 · 2.5天<br>部门中途旅游</h1>
+      <p class="hero-subtitle">熊猫 · 三国文化 · 轻量红色打卡 · 成都慢生活</p>
+      <div class="chips">
+        <span class="chip">📅 2026.08.21 — 08.23</span>
+        <span class="chip">👥 14人 · 11人有预算</span>
+        <span class="chip">📍 广州黄埔出发</span>
+        <span class="chip">✈️ 机票自理</span>
+      </div>
+      <p class="hero-note">一份可直接双击打开的成都本地行程页。预算按 12,320 元公共上限设计，路线留有午休、天气和返程缓冲。</p>
+      <div class="hero-art" aria-hidden="true">
+        <div class="passport">
+          <div class="passport-top"><span>TRAVEL NOTE</span><span>CD · 08</span></div>
+          <div class="passport-title">CHENGDU CITY EDITION</div>
+          <div class="panda-seal">🐼</div>
+          <div class="passport-bottom"><span>2.5 DAYS</span><span>14 TRAVELERS</span></div>
+        </div>
+        <div class="floating-note">慢一点，刚刚好</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="quick-nav" aria-label="页面导航">
+      <a href="#overview">路线全览</a>
+      <a href="#itinerary">每日行程</a>
+      <a href="#budget">预算概览</a>
+      <a href="#patriotic">爱国团建</a>
+      <a href="#checklist">出发清单</a>
+    </nav>
+    <section class="panel" id="overview">
+      <div class="panel-head">
+        <div>
+          <div class="section-kicker">TRIP OVERVIEW</div>
+          <h2>路线全览</h2>
+          <p>长途飞行节省时间，成都当地按片区慢慢走。</p>
+        </div>
+        <span class="tag">不跨城 · 不赶路</span>
+      </div>
+      <div class="route-wrap">
+        <div class="route-map" aria-label="本地路线示意图">
+          <span class="map-caption">CHENGDU · CITY ROUTE</span>
+          <span class="map-distance">市内慢游路线</span>
+          <svg viewBox="0 0 1000 250" role="img" aria-label="黄埔到成都及市内景点的路线示意">
+            <path d="M70 182 C180 92 255 210 350 126 S520 77 600 132 S750 178 930 69" fill="none" stroke="#a9c0a4" stroke-width="6" stroke-linecap="round" stroke-dasharray="12 14"/>
+            <path d="M98 172 C180 109 254 206 342 130 S518 92 590 137 S753 171 912 79" fill="none" stroke="#55775e" stroke-width="3" stroke-linecap="round"/>
+            <g fill="#fffdfa" stroke="#55775e" stroke-width="4">
+              <circle cx="70" cy="182" r="15"/><circle cx="250" cy="183" r="15"/><circle cx="430" cy="104" r="15"/><circle cx="610" cy="145" r="15"/><circle cx="790" cy="164" r="15"/><circle cx="930" cy="69" r="15"/>
+            </g>
+            <g fill="#55775e" font-size="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">
+              <text x="55" y="226">黄埔</text><text x="224" y="226">白云</text><text x="397" y="70">成都</text><text x="560" y="190">熊猫</text><text x="750" y="211">武侯祠</text><text x="875" y="44">返程</text>
+            </g>
+            <g fill="#d27f65"><circle cx="430" cy="104" r="7"/><circle cx="610" cy="145" r="7"/><circle cx="790" cy="164" r="7"/></g>
+          </svg>
+        </div>
+        <div class="route-strip" aria-label="成都行程路线示意">
+          <div class="route-stop"><div class="dot">起</div><strong>黄埔</strong><small>集合</small></div>
+          <div class="route-stop"><div class="dot">✈</div><strong>白云机场</strong><small>周五下午</small></div>
+          <div class="route-stop"><div class="dot">成</div><strong>成都</strong><small>住市中心</small></div>
+          <div class="route-stop accent"><div class="dot">🐼</div><strong>熊猫基地</strong><small>周六早上</small></div>
+          <div class="route-stop"><div class="dot">三</div><strong>武侯祠</strong><small>锦里晚餐</small></div>
+          <div class="route-stop accent"><div class="dot">★</div><strong>十二桥</strong><small>红色团建</small></div>
+          <div class="route-stop"><div class="dot">返</div><strong>天府机场</strong><small>周日返程</small></div>
+        </div>
+        <div class="route-foot"><span>📌 住宿：春熙路—天府广场—太古里一带</span><span>🚇 交通：地铁＋分组打车，不安排全程大巴</span></div>
+      </div>
+      <div class="summary-grid">
+        <div class="metric"><span class="metric-label">公司预算上限</span><strong>¥12,320</strong><small>11 ×（900 + 100 + 120）</small></div>
+        <div class="metric"><span class="metric-label">计划支出</span><strong>¥12,290</strong><small>暂留 30 元</small></div>
+        <div class="metric"><span class="metric-label">住宿</span><strong>2晚</strong><small>目标 7 间双床房</small></div>
+        <div class="metric"><span class="metric-label">分组</span><strong>4 / 4 / 3 / 3</strong><small>每次换乘点名</small></div>
+      </div>
+    </section>
+
+    <section class="panel" id="itinerary">
+      <div class="panel-head">
+        <div>
+          <div class="section-kicker">DAILY ITINERARY</div>
+          <h2>每日行程</h2>
+          <p>核心景点不求多，时间留给团队一起吃饭和休息。</p>
+        </div>
+      </div>
+      <div class="day-list">
+        <article class="day-card">
+          <div class="day-label">DAY 0<span>8月21日 · 周五</span></div>
+          <div class="day-content">
+            <h3>黄埔 → 成都 · 抵达入住</h3>
+            <p>下午统一集合前往白云机场。抵达成都后直接入住市中心，第一晚不安排景点和复杂活动，但保留一顿真正的成都夜宵。</p>
+            <div class="day-meta"><span class="tag">✈️ 飞行</span><span class="tag">🍢 成都烧烤/夜宵</span><span class="tag">🛏️ 不熬夜</span></div>
+            <div class="schedule">
+              <div class="schedule-row"><time>周五下午</time><span>黄埔集合、点名、发放资料；具体出发时间待确认</span></div>
+              <div class="schedule-row"><time>待确认</time><span>按 4 / 4 / 3 / 3 分组打滴滴前往白云机场，时间以最终航班为准</span></div>
+              <div class="schedule-row"><time>待确认</time><span>广州白云 → 成都双流/天府（二选一，航班与起飞时间待确认）</span></div>
+              <div class="schedule-row"><time>22:00–23:15</time><span>酒店入住后，附近成都烧烤/串串/夜宵大排档</span></div>
+            </div>
+            <div class="tip">💡 夜宵选酒店步行或短途打车可到的店，重点吃烧烤、串串、烤脑花/烤苕皮等成都风味；航班晚点时缩短为外卖或附近简餐，23:30 前回房，保证第二天早起。</div>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-label">DAY 1<span>8月22日 · 周六</span></div>
+          <div class="day-content">
+            <h3>熊猫精华游 → 武侯祠短逛 → 锦里吃逛 → 分组夜生活</h3>
+            <p>景点只看代表性内容，把时间留给川菜、小吃、买伴手礼和晚上的分组放松。</p>
+            <div class="day-meta"><span class="tag coral">🐼 熊猫短游</span><span class="tag">🏯 武侯祠</span><span class="tag">🍲 团建晚餐</span><span class="tag">🌙 分组夜生活</span></div>
+            <div class="schedule">
+              <div class="schedule-row"><time>06:30</time><span>起床、简单早餐</span></div>
+              <div class="schedule-row"><time>07:00–07:45</time><span>酒店出发，分组前往熊猫基地</span></div>
+              <details class="schedule-detail coral">
+                <summary><time>07:45–10:15</time><span>熊猫基地上午票，精华游 2–2.5 小时<small>点击展开图片</small></span></summary>
+                <div class="schedule-expand">
+                  <img class="spot-photo" src="assets/chengdu/image-02.jpg" alt="成都大熊猫繁育研究基地内的大熊猫">
+                  <div class="spot-copy">
+                    <h4>把第一眼留给国宝</h4>
+                    <div class="map-links"><button class="map-link map-choose" type="button" data-place="成都大熊猫繁育研究基地" data-amap="https://uri.amap.com/search?keyword=成都大熊猫繁育研究基地&amp;city=成都" data-baidu="https://map.baidu.com/search/成都大熊猫繁育研究基地" data-didi="https://webapp.didi.cn/">📍 打开地图</button></div>
+                    <p>只看幼年熊猫、主要熊猫馆和科普区域，10:00 左右开始集合，10:15 左右离园；不安排熊猫塔、完整园区步行或长时间排观光车。</p>
+                    <div class="spot-facts"><div class="spot-fact"><b>适合介绍：</b>成都最有记忆点的第一站</div><div class="spot-fact"><b>拍照提示：</b>绿色竹林＋熊猫是最稳的出片组合</div><div class="spot-fact"><b>集合方式：</b>入园前约定出口集合点，按小组点名</div></div>
+                    <p class="spot-credit">图片：Jimmyshjj / Wikimedia Commons（CC BY-SA 4.0）· <a href="https://commons.wikimedia.org/wiki/File:Chengdu_Research_Base_of_Giant_Panda_Breeding,_201907,_07.jpg" target="_blank" rel="noreferrer">来源页 ↗</a></p>
+                  </div>
+                </div>
+              </details>
+              <div class="schedule-row"><time>10:15–12:30</time><span>离开基地、团队早午餐，返回市区</span></div>
+              <div class="schedule-row"><time>13:00–15:00</time><span>回酒店午休/自由休整，给团队留足缓冲</span></div>
+              <details class="schedule-detail">
+                <summary><time>15:30–16:30</time><span>武侯祠博物馆 · 三国文化短逛<small>点击展开图片</small></span></summary>
+                <div class="schedule-expand">
+                  <img class="spot-photo" src="assets/chengdu/image-03.jpg" alt="成都武侯祠博物馆内的盆景园与石板路">
+                  <div class="spot-copy">
+                    <h4>走进三国文化的绿荫里</h4>
+                    <div class="map-links"><button class="map-link map-choose" type="button" data-place="成都武侯祠博物馆" data-amap="https://uri.amap.com/search?keyword=成都武侯祠博物馆&amp;city=成都" data-baidu="https://map.baidu.com/search/成都武侯祠博物馆" data-didi="https://webapp.didi.cn/">📍 打开地图</button></div>
+                    <p>只看汉昭烈庙、诸葛亮殿、三义庙和红墙夹道，快速了解“三国圣地”的核心内容；不安排长时间听讲解。</p>
+                    <div class="spot-facts"><div class="spot-fact"><b>适合介绍：</b>短时间感受成都代表性历史地标</div><div class="spot-fact"><b>拍照提示：</b>红墙夹道、古树和石板路都很有氛围</div><div class="spot-fact"><b>逛法：</b>1 小时到点集合，余下时间留给锦里吃喝</div></div>
+                    <p class="spot-credit">图片：Daderot / Wikimedia Commons（CC0）· <a href="https://commons.wikimedia.org/wiki/File:Penjing_garden_-_Wuhou_Shrine_-_Chengdu,_China_-_DSC05432.jpg" target="_blank" rel="noreferrer">来源页 ↗</a></p>
+                  </div>
+                </div>
+              </details>
+              <details class="schedule-detail">
+                <summary><time>16:30–18:30</time><span>锦里古街 · 小吃、伴手礼与自由逛街<small>点击展开图片</small></span></summary>
+                <div class="schedule-expand">
+                  <img class="spot-photo" src="assets/chengdu/image-04.jpg" alt="成都锦里古街入口与红灯笼">
+                  <div class="spot-copy">
+                    <h4>把晚餐变成一段夜游</h4>
+                    <div class="map-links"><button class="map-link map-choose" type="button" data-place="成都锦里古街" data-amap="https://uri.amap.com/search?keyword=成都锦里古街&amp;city=成都" data-baidu="https://map.baidu.com/search/成都锦里古街" data-didi="https://webapp.didi.cn/">📍 打开地图</button></div>
+                    <p>锦里适合放在武侯祠之后，边走边吃、边逛边拍。不要把它排成“打卡任务”，给同事留一点自由选择小吃和伴手礼的时间。</p>
+                    <div class="spot-facts"><div class="spot-fact"><b>适合介绍：</b>第一次去成都很容易产生向往感</div><div class="spot-fact"><b>拍照提示：</b>傍晚灯笼亮起后，入口和巷道都很出片</div></div>
+                    <p class="spot-credit">图片：Daderot / Wikimedia Commons（CC0）· <a href="https://commons.wikimedia.org/wiki/File:Jinli_Street_-_Chengdu,_China_-_DSC05394.jpg" target="_blank" rel="noreferrer">来源页 ↗</a></p>
+                  </div>
+                </div>
+              </details>
+              <div class="schedule-row"><time>18:30–20:30</time><span>成都火锅/串串香团餐 · 预留 2 小时</span></div>
+              <details class="schedule-detail optional">
+                <summary><time>21:00–22:30</time><span>分组夜生活：男生正规足疗；女生夜景/清吧/夜宵<small>点击展开安排</small></span></summary>
+                <div class="schedule-expand">
+                  <div class="spot-copy">
+                    <h4>标哥提议：饭后按脚，分组各自放松</h4>
+                    <p>男生组可由标哥牵头，选择正规、明码标价的足疗店，提前确认项目、时长、房型和是否有最低消费。女生组不安排陪侍或色情服务，可在九眼桥—安顺廊桥看夜景，再选择合法公开营业的清吧、茶馆或夜宵；不参加夜生活的同事直接回酒店休息。</p>
+                    <div class="spot-facts"><div class="spot-fact"><b>统一规则：</b>各组至少 2 人同行，负责人在群里报备店名、人数和预计回店时间</div><div class="spot-fact"><b>费用边界：</b>足疗、酒水、夜宵和个人消费自理，不占 12,320 元公共预算</div><div class="spot-fact"><b>安全底线：</b>只选正规公开店铺；不接受陌生人带路、临时加价或强制消费</div></div>
+                    <p class="spot-credit">安顺廊桥夜间有茶馆、酒吧等公开业态，适合女生组做安全的夜景＋轻社交路线；具体店铺和营业情况出发前再核验。</p>
+                  </div>
+                  <div class="spot-copy">
+                    <h4>建议分组</h4>
+                    <div class="spot-facts"><div class="spot-fact"><b>A 组：</b>男生足疗组（标哥负责统计）</div><div class="spot-fact"><b>B 组：</b>女生夜景＋清吧/茶馆/夜宵组</div><div class="spot-fact"><b>C 组：</b>回酒店休息组</div></div>
+                    <p class="spot-credit">不建议安排“男模店”或任何涉及陪侍、色情服务的场所；若所说的是合法男士表演/公开酒吧，请只通过正规平台核验经营资质、价目表和最低消费。</p>
+                  </div>
+                </div>
+              </details>
+              <div class="schedule-row"><time>22:30</time><span>各组回酒店，群内报平安；不参加者可提前休息</span></div>
+            </div>
+            <div class="tip">💡 这天按“熊猫短游、武侯祠短逛、锦里吃逛、火锅慢慢吃”执行，不追求景点逛完；火锅/串串按 1.5–2 小时预留，晚间分组活动均为可选、自费。</div>
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-label">DAY 2<span>8月23日 · 周日</span></div>
+          <div class="day-content">
+            <h3>十二桥轻量打卡 → 文殊坊吃逛 → 宽窄巷子/人民公园 → 返程</h3>
+            <p>成都博物馆取消；红色团建快速完成，上午吃小吃、买伴手礼，下午回到老成都街巷喝茶、逛小店、慢慢收尾。</p>
+            <div class="day-meta"><span class="tag coral">★ 轻量红色团建</span><span class="tag">🍜 文殊坊</span><span class="tag">🍵 老成都慢游</span></div>
+            <div class="schedule">
+              <div class="schedule-row"><time>08:00–09:00</time><span>早餐、退房、行李寄存</span></div>
+              <details class="schedule-detail coral">
+                <summary><time>09:30–10:00</time><span>十二桥烈士墓/陈列室 · 简短介绍与庄重合照<small>点击展开图片</small></span></summary>
+                <div class="schedule-expand">
+                  <img class="spot-photo" src="assets/chengdu/image-05.jpg" alt="成都十二桥烈士墓园简介墙">
+                  <div class="spot-copy">
+                    <h4>20–30 分钟完成，不占用半天时间</h4>
+                    <div class="map-links"><button class="map-link map-choose" type="button" data-place="成都十二桥烈士墓" data-amap="https://uri.amap.com/search?keyword=成都十二桥烈士墓&amp;city=成都" data-baidu="https://map.baidu.com/search/成都十二桥烈士墓" data-didi="https://webapp.didi.cn/">📍 打开地图</button></div>
+                    <p>到成都文化公园后先由负责人做简短背景介绍，再按现场要求完成庄重合照；若陈列室当日开放，可快速参观，不安排长时间讲解或娱乐化环节。</p>
+                    <div class="spot-facts"><div class="spot-fact"><b>适合介绍：</b>短、稳、有分量的部门团建</div><div class="spot-fact"><b>注意：</b>开放、预约和拍照规则以现场为准</div></div>
+                    <p class="spot-credit">图片：Kcx36 / Wikimedia Commons（CC BY-SA 4.0）· <a href="https://commons.wikimedia.org/wiki/File:%E6%88%90%E9%83%BD%E5%8D%81%E4%BA%8C%E6%A1%A5%E7%83%88%E5%A3%AB%E5%A2%93_01.jpg" target="_blank" rel="noreferrer">来源页 ↗</a></p>
+                  </div>
+                </div>
+              </details>
+              <details class="schedule-detail">
+                <summary><time>10:30–11:30</time><span>文殊院 + 文殊坊 · 古寺短逛与小吃<small>点击展开图片</small></span></summary>
+                <div class="schedule-expand">
+                  <img class="spot-photo" src="assets/chengdu/image-06.jpg" alt="成都文殊院殿宇与香炉">
+                  <div class="spot-copy">
+                    <h4>把返程日上午换成一段安静的成都</h4>
+                    <div class="map-links"><button class="map-link map-choose" type="button" data-place="成都文殊院" data-amap="https://uri.amap.com/search?keyword=成都文殊院&amp;city=成都" data-baidu="https://map.baidu.com/search/成都文殊院" data-didi="https://webapp.didi.cn/">📍 打开地图</button></div>
+                    <p>文殊院只安排短逛，重点看殿宇、树影和香火；出来后马上进入文殊坊吃小吃、买伴手礼，不把上午排成完整宗教文化参观。</p>
+                    <div class="spot-facts"><div class="spot-fact"><b>适合介绍：</b>用 1 小时换一段成都人文和烟火气</div><div class="spot-fact"><b>拍照提示：</b>殿宇、树影和香炉适合拍安静的氛围照</div><div class="spot-fact"><b>费用提示：</b>当前公开信息显示免费开放，出发前再核验开放安排</div></div>
+                    <p class="spot-credit">图片：Daderot / Wikimedia Commons（CC0）· <a href="https://commons.wikimedia.org/wiki/File:Incense_-_Wenshu_Monastery_-_Chengdu,_China_-_DSC05050.jpg" target="_blank" rel="noreferrer">来源页 ↗</a></p>
+                  </div>
+                </div>
+              </details>
+              <div class="schedule-row"><time>11:30–14:00</time><span>文殊坊午餐、小吃、伴手礼与休息：钟水饺/担担面/甜水面/蛋烘糕/冰粉按小组选择</span></div>
+              <details class="schedule-detail optional"><summary><time>14:00–15:30</time><span>宽窄巷子或人民公园（二选一）：慢逛、喝茶、买小物<small>点击展开图片</small></span></summary><div class="schedule-expand"><img class="spot-photo" src="assets/chengdu/image-07.jpg" alt="成都宽窄巷子"><div class="spot-copy"><h4>下午留给成都慢生活</h4><div class="map-links"><button class="map-link map-choose" type="button" data-place="成都宽窄巷子" data-amap="https://uri.amap.com/search?keyword=成都宽窄巷子&amp;city=成都" data-baidu="https://map.baidu.com/search/成都宽窄巷子" data-didi="https://webapp.didi.cn/">📍 打开地图</button></div><p>宽窄巷子适合短逛、喝茶和买小物；如果团队更想休息，就改去人民公园喝茶，不追求两个地方都去。</p><div class="spot-facts"><div class="spot-fact"><b>安排原则：</b>二选一，给返程预留缓冲</div></div></div></div></details>
+              <div class="schedule-row"><time>15:30–16:30</time><span>回酒店取行李、最后点名、预留机动时间；天府航班不要拖延</span></div>
+              <div class="schedule-row"><time>16:30–17:30</time><span>分组前往机场：双流约 16:30 出发，天府按航班提前至 15:30–16:00 出发</span></div>
+            </div>
+            <div class="tip">💡 Day 2 下午只选宽窄巷子或人民公园其中一个；双流航班可慢慢收尾，天府航班建议 15:30 前结束下午活动并提前出发。</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    
+
+      <section class="panel" id="patriotic">
+        <div class="panel-head">
+          <div>
+            <div class="section-kicker">PATRIOTIC TEAM BUILDING</div>
+            <h2>爱国团建</h2>
+            <p>100 元/人专项做轻量、庄重、有记录的主题打卡。</p>
+          </div>
+        </div>
+        <div class="red-card">
+          <h3>十二桥烈士墓 · 烈士事迹陈列室</h3>
+          <p>安排 20–30 分钟简短介绍、指定区域合照；若陈列室开放则快速参观，不把纪念设施娱乐化。鲜花、资料或统一物料是否使用，按公司财务规则从 1,100 元专项中安排；现场开放、预约和拍照规则出发前再确认。</p>
+          <p style="margin-top:12px"><button class="map-link map-choose" type="button" data-place="十二桥烈士墓" data-amap="https://uri.amap.com/search?keyword=成都十二桥烈士墓&amp;city=成都" data-baidu="https://map.baidu.com/search/成都十二桥烈士墓" data-didi="https://webapp.didi.cn/">📍 打开地图</button> <a href="https://news.chengdu.cn/2026/0314/69b4b5dcf34d440475d4a239.shtml" target="_blank" rel="noreferrer">查看相关公开信息 ↗</a></p>
+        </div>
+      </section>
+    <div class="two-col">
+      <section class="panel" id="budget">
+        <div class="panel-head">
+          <div>
+            <div class="section-kicker">BUDGET</div>
+            <h2>预算概览</h2>
+            <p>机票往返个人自理。</p>
+          </div>
+        </div>
+        <div class="budget">
+          <div class="budget-total"><strong>¥12,290</strong><span>上限 ¥12,320<br>14 人公共地面费用</span></div>
+          <div class="bar-list">
+            <div><div class="bar-head"><span>酒店 2 晚</span><span>¥4,200</span></div><div class="bar"><i style="width:100%"></i></div></div>
+            <div><div class="bar-head"><span>交通</span><span>¥2,200</span></div><div class="bar"><i style="width:52%"></i></div></div>
+            <div><div class="bar-head"><span>基础餐饮</span><span>¥3,000</span></div><div class="bar"><i class="gold" style="width:71%"></i></div></div>
+            <div><div class="bar-head"><span>景点门票</span><span>¥1,470</span></div><div class="bar"><i style="width:35%"></i></div></div>
+            <div><div class="bar-head"><span>爱国团建专项</span><span>¥1,100</span></div><div class="bar"><i class="coral" style="width:26%"></i></div></div>
+            <div><div class="bar-head"><span>饮水/保险/杂费</span><span>¥320</span></div><div class="bar"><i style="width:8%"></i></div></div>
+          </div>
+          <div class="flight-reference" aria-label="机票价格参考">
+            <div class="flight-option"><strong>¥1,500/人</strong><span>天府机场 TFU · 往返参考</span></div>
+            <div class="flight-option"><strong>¥2,200/人</strong><span>双流机场 CTU · 往返参考</span></div>
+            <div class="flight-saving"><b>省约 ¥700</b>选天府<br>双流离市区更近</div>
+          </div>
+          <p class="budget-note">机票由个人购买、个人支付，不计入团建预算；活动费用先按 11 人额度报销，报销后剩余活动预算再平均发放给 14 人。</p>
+        </div>
+      </section>
+
+
+    <section class="panel" id="checklist">
+      <div class="panel-head">
+        <div>
+          <div class="section-kicker">CHECKLIST</div>
+          <h2>出发前清单</h2>
+          <p>勾选状态会保存在当前浏览器本机。</p>
+        </div>
+        <span class="tag">LOCAL ONLY</span>
+      </div>
+      <div class="checklist">
+        <div class="checklist-list">
+          <label class="check-item"><input type="checkbox" data-check="policy"><span>确认统一结算规则：活动费用先按 11 人额度报销，余额再平均发放给 14 人</span></label>
+          <label class="check-item"><input type="checkbox" data-check="flight"><span>全员确认往返机票、航站楼和行李额度</span></label>
+          <label class="check-item"><input type="checkbox" data-check="hotel"><span>锁定 7 间双床房，目标 2 晚不超过 4,200 元</span></label>
+          <label class="check-item"><input type="checkbox" data-check="panda"><span>预约 8 月 22 日熊猫基地上午票，准备本人证件</span></label>
+          <label class="check-item"><input type="checkbox" data-check="wuhou"><span>预约武侯祠，14 人至少准备 2 个账号</span></label>
+          <label class="check-item"><input type="checkbox" data-check="red-site"><span>确认十二桥开放、预约和 20–30 分钟团体合照要求</span></label>
+          <label class="check-item"><input type="checkbox" data-check="wenshu"><span>核验文殊院开放安排，准备文殊坊午餐备选</span></label>
+          <label class="check-item"><input type="checkbox" data-check="night-split"><span>统计男生足疗组、女生夜生活组和回酒店组人数</span></label>
+          <label class="check-item"><input type="checkbox" data-check="foot-massage"><span>男生足疗组提前确认正规店铺、项目、时长、房型和价格</span></label>
+          <label class="check-item"><input type="checkbox" data-check="meal"><span>锁定早午餐、火锅/串串香晚餐和文殊坊午餐；火锅目标人均 70–80 元</span></label>
+          <label class="check-item"><input type="checkbox" data-check="weather"><span>出发前 1–3 天查看天气、景区公告和航班动态</span></label>
+        </div>
+        <button class="reset" id="resetChecks" type="button">清空本机勾选记录</button>
+      </div>
+    </section>
+    </div>
+
+    <section class="panel" id="sources">
+      <div class="panel-head">
+        <div>
+          <div class="section-kicker">OFFICIAL SOURCES</div>
+          <h2>信息核验入口</h2>
+          <p>页面可以离线打开；以下链接在联网时用于查看最新公告。</p>
+        </div>
+      </div>
+      <div class="sources">
+        <a href="https://www.panda.org.cn/cn/service/ticket/" target="_blank" rel="noreferrer">熊猫基地票务 ↗</a>　
+        <a href="https://www.panda.org.cn/cn/service/opentime/" target="_blank" rel="noreferrer">熊猫基地开放时间 ↗</a>　
+        <a href="https://whpwm.cdwuhouci.cn/index" target="_blank" rel="noreferrer">武侯祠官方预约 ↗</a>　
+        <a href="https://cd.bendibao.com/jingdian/wenshuyuancdeee/" target="_blank" rel="noreferrer">文殊院当前开放信息 ↗</a>　
+        <a href="https://ljcd.gov.cn/show-3035-109687-1.html" target="_blank" rel="noreferrer">九眼桥/安顺廊桥夜生活参考 ↗</a>　
+        <a href="https://jtt.sc.gov.cn/jtt/c101586/2023/3/24/7d66eabfde78487881306b6bbbf9bf89.shtml" target="_blank" rel="noreferrer">天府机场交通 ↗</a>
+        <div class="image-sources">
+          <strong>景点图片来源</strong>
+          <p>页面图片均下载至本地，来自 Wikimedia Commons 的公开授权图片：首屏竹林背景、武侯祠、锦里、文殊院、宽窄巷子、人民公园为 Public domain/CC0；熊猫基地和十二桥烈士墓图片为 CC BY-SA 4.0，卡片内已标注作者与来源页。竹林背景：A,Ocram · <a href="https://commons.wikimedia.org/wiki/File:Sagano_Bamboo_forest.jpg" target="_blank" rel="noreferrer">来源页 ↗</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>成都部门中途旅游 · 2026.08.21—08.23 · 本地 HTML 版</footer>
+  </main>
+
+  <div class="map-modal" id="mapModal" hidden>
+    <div class="map-dialog" role="dialog" aria-modal="true" aria-labelledby="mapDialogTitle">
+      <h3 id="mapDialogTitle">选择地图</h3>
+      <p id="mapDialogPlace">请选择要使用的地图应用</p>
+      <div class="map-choice">
+        <button type="button" id="openAmap">🟢 使用高德地图</button>
+        <button type="button" id="openBaidu">🔵 使用百度地图</button>
+        <button type="button" id="openDidi">🟠 使用滴滴（输入目的地）</button>
+        <button type="button" class="close-map" id="closeMap">暂不打开</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const KEY = 'chengdu-trip-checklist-v1';
+      const boxes = Array.from(document.querySelectorAll('[data-check]'));
+      let saved = {};
+      try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (_) {}
+      boxes.forEach((box) => {
+        box.checked = Boolean(saved[box.dataset.check]);
+        box.addEventListener('change', () => {
+          saved[box.dataset.check] = box.checked;
+          try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (_) {}
+        });
+      });
+      document.getElementById('resetChecks').addEventListener('click', () => {
+        boxes.forEach((box) => { box.checked = false; });
+        saved = {};
+        try { localStorage.removeItem(KEY); } catch (_) {}
+      });
+
+      const mapModal = document.getElementById('mapModal');
+      const mapPlace = document.getElementById('mapDialogPlace');
+      const openAmap = document.getElementById('openAmap');
+      const openBaidu = document.getElementById('openBaidu');
+      const openDidi = document.getElementById('openDidi');
+      let selectedMap = {};
+      const closeMap = () => { mapModal.hidden = true; };
+      document.querySelectorAll('.map-choose').forEach((button) => {
+        button.addEventListener('click', () => {
+          selectedMap = { amap: button.dataset.amap, baidu: button.dataset.baidu, didi: button.dataset.didi };
+          mapPlace.textContent = button.dataset.place + ' · 请选择要使用的地图';
+          mapModal.hidden = false;
+        });
+      });
+      openAmap.addEventListener('click', () => { window.open(selectedMap.amap, '_blank', 'noopener'); closeMap(); });
+      openBaidu.addEventListener('click', () => { window.open(selectedMap.baidu, '_blank', 'noopener'); closeMap(); });
+      openDidi.addEventListener('click', () => { window.open(selectedMap.didi, '_blank', 'noopener'); closeMap(); });
+      document.getElementById('closeMap').addEventListener('click', closeMap);
+      mapModal.addEventListener('click', (event) => { if (event.target === mapModal) closeMap(); });
+    }());
+  </script>
+</body>
+</html>
